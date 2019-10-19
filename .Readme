@@ -1,0 +1,2 @@
+npm i express morgan promise-mysql cors
+
