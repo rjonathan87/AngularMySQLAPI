@@ -3,9 +3,17 @@ import pool from "../database";
 
 class GamesController {
   public async list(req: Request, res: Response) {
-    const games = await pool.query('SELECT * FROM games');
-    // res.json({ games });
-    console.log(res);
+    try {
+
+      await pool.query('SELECT * FROM games', (err, result, fields) => {
+        if (err) throw err;
+        res.json(result);
+      });
+
+    } catch (error) {
+      console.log(error);
+
+    }
   }
 
   public getOne(req: Request, res: Response) {
