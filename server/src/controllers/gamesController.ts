@@ -2,13 +2,22 @@ import { Request, Response } from "express";
 import pool from "../database";
 
 class GamesController {
-  public index(req: Request, res: Response) {
-    pool.query("DESCRIBE games");
-    res.json("games");
+  public async list(req: Request, res: Response) {
+    const games = await pool.query('SELECT * FROM games');
+    // res.json({ games });
+    console.log(res);
   }
 
-  public create(req: Request, res: Response) {
-    res.json({ message: "creating" });
+  public getOne(req: Request, res: Response) {
+    res.json({ message: `This is game ${req.params.id}` });
+  }
+
+  public async create(req: Request, res: Response): Promise<void> {
+    console.log(req.body);
+
+    await pool.query('INSERT INTO games set ?', [req.body]);
+
+    res.json({ message: "Game saved" });
   }
 
   public put(req: Request, res: Response) {
