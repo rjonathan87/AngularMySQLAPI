@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Games } from 'src/app/models/Games';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-games-form',
@@ -21,9 +22,5 @@ export class GamesFormComponent implements OnInit {
   ngOnInit() {
   }
 
-  save() {
-    console.log('sss');
-
-  }
 
 }
