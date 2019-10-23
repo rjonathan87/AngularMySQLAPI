@@ -1,1 +1,14 @@
-<p>Games List component</p>
+<div class="row">
+    <div class="col-md-4" *ngFor="let item of games">
+        <div class="card">
+            <img [src]="item.image" class="card-img-top">
+
+            <div class="card-body">
+                <h5 class="card-title">{{item.title}}</h5>
+                <p class="card-text">{{item.description}}</p>
+                <button class="btn btn-success col-md-4 m-2">Editar</button>
+                <button class="btn btn-danger col-md-4">Eliminar</button>
+            </div>
+        </div>
+    </div>
+</div>

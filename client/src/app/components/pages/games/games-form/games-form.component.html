@@ -1,1 +1,14 @@
-<p>games-form works!</p>
+<div class="col-md-4 offset-md-3 card">
+    <form class="card-body">
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Título de Juego" autofocus />
+        </div>
+        <div class="form-group">
+            <textarea class="form-control" rows="5" placeholder="Descripción"></textarea>
+        </div>
+        <div class="form-group">
+            <input type="url" class="form-control" placeholder="Imágen url" />
+        </div>
+        <button class="btn btn-success btn-block" (click)="save()">Guardar</button>
+    </form>
+</div>
