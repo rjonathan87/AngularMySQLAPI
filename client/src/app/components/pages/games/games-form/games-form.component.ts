@@ -3,6 +3,7 @@ import { Games } from 'src/app/models/Games';
 import { NgForm } from '@angular/forms';
 
 import { GamesService } from 'src/app/services/games.service';
+import { Router } from '@angular/router';
 
 @Component({
   // tslint:disable-next-line: quotemark
@@ -20,7 +21,10 @@ export class GamesFormComponent implements OnInit {
     created_at: new Date()
   };
 
-  constructor(private gamesService: GamesService) { }
+  constructor(
+    private gamesService: GamesService,
+    private router: Router
+  ) { }
 
   ngOnInit() { }
 
@@ -33,6 +37,7 @@ export class GamesFormComponent implements OnInit {
         .subscribe(
           res => {
             console.log(res);
+            this.router.navigate(['/']);
           },
           err => console.error(err)
         );
