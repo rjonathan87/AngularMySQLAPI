@@ -1,0 +1,11 @@
+<div class="card p-2">
+    <img [src]="game.image !== '' ? game.image : '../../assets/img/img-not-available.jpg' " class="card-img-top mt-3">
+    <div class="card-body">
+        <h5 class="card-title">
+            <span *ngIf="game.title">{{ game.title }}</span>
+            <span *ngIf="!game.title">Title</span>
+        </h5>
+        <p class="card-text" *ngIf="game.description">{{game.description}}</p>
+        <p class="card-text" *ngIf="!game.description">Description</p>
+    </div>
+</div>

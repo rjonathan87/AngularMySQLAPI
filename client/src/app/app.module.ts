@@ -10,13 +10,15 @@ import { GamesListComponent } from './components/pages/games/games-list/games-li
 
 import { GamesService } from './services/games.service';
 import { HttpClientModule } from '@angular/common/http';
+import { GamesPreviewComponent } from './components/pages/games/games-preview/games-preview.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavigationComponent,
     GamesFormComponent,
-    GamesListComponent
+    GamesListComponent,
+    GamesPreviewComponent
   ],
   imports: [
     BrowserModule,
