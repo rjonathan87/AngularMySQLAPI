@@ -34,7 +34,7 @@ export class GamesFormComponent implements OnInit {
           res => {
             console.log(res);
           },
-          err => console.log(err)
+          err => console.error(err)
         );
     }
   }

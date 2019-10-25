@@ -7,7 +7,7 @@
                 <h5 class="card-title">{{item.title}}</h5>
                 <p class="card-text">{{item.description}}</p>
                 <button class="btn btn-success col-md-4 m-2">Editar</button>
-                <button class="btn btn-danger col-md-4">Eliminar</button>
+                <button class="btn btn-danger col-md-4" (click)="deleteGame(item.id)">Eliminar</button>
             </div>
         </div>
     </div>

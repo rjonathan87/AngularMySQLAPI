@@ -2,6 +2,9 @@
     <div class="row">
         <div class="col-md-5 card m-1">
             <form #frm="ngForm" (ngSubmit)="onSubmit(frm)" novalidate class="card-body" id="frm-Data">
+
+                <input type="text" [(ngModel)]="game.id" name="id" class="form-control" />
+
                 <div class="form-group">
                     <input type="text" [(ngModel)]="game.title" name="title" class="form-control"
                         placeholder="Título de Juego" autofocus required />

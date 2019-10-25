@@ -7,5 +7,8 @@
         </h5>
         <p class="card-text" *ngIf="game.description">{{game.description}}</p>
         <p class="card-text" *ngIf="!game.description">Description</p>
+
+        <p class="card-text" *ngIf="game.created_at">{{game.created_at | date : 'yyyy-MM-dd' }}</p>
+
     </div>
 </div>
