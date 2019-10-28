@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { GamesService } from 'src/app/services/games.service';
 import { Games } from 'src/app/models/Games';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-games-list',
@@ -12,7 +13,7 @@ export class GamesListComponent implements OnInit {
 
   games: any = [];
 
-  constructor(private gamesService: GamesService) { }
+  constructor(private gamesService: GamesService, private router: Router) { }
 
   ngOnInit() {
     this.getGames();
@@ -28,6 +29,10 @@ export class GamesListComponent implements OnInit {
           return console.error(err);
         }
       );
+  }
+
+  editGame(id: string) {
+    this.router.navigate(['/add', id]);
   }
 
   deleteGame(id: string) {

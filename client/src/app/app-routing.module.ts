@@ -19,7 +19,7 @@ const routes: Routes = [
     component: GamesFormComponent
   },
   {
-    path: 'edit/:id',
+    path: 'add/:id',
     component: GamesFormComponent
   }
 ];

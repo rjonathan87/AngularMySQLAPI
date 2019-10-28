@@ -1,7 +1,7 @@
 export interface Games {
     id?: number;
-    title: string;
-    description: string;
-    image: string;
-    created_at: Date;
+    title?: string;
+    description?: string;
+    image?: string;
+    created_at?: Date;
 }

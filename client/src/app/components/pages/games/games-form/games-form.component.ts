@@ -3,7 +3,7 @@ import { Games } from 'src/app/models/Games';
 import { NgForm } from '@angular/forms';
 
 import { GamesService } from 'src/app/services/games.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   // tslint:disable-next-line: quotemark
@@ -23,24 +23,59 @@ export class GamesFormComponent implements OnInit {
 
   constructor(
     private gamesService: GamesService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    // tslint:disable-next-line: radix
+    const Id = this.route.snapshot.paramMap.get('id');
+
+    if (Id !== null) {
+      this.llenarForm(Id);
+    }
+
+  }
+
+  llenarForm(Id: string) {
+
+    this.gamesService.getGame(Id)
+      .subscribe(
+        res => {
+          this.game = res;
+        },
+        err => {
+          console.error(err);
+        }
+      );
+  }
 
   onSubmit(frm: NgForm) {
-    console.log(frm.value); // { first: '', last: '' }
-    console.log(frm.valid); // false
+    // console.log(frm.value);
+    // { first: '', last: '' }
 
     if (frm.valid) {
-      this.gamesService.saveGame(this.game)
-        .subscribe(
-          res => {
-            console.log(res);
-            this.router.navigate(['/']);
-          },
-          err => console.error(err)
-        );
+      if (frm.value.id !== 0) {
+        this.gamesService.updateGame(frm.value)
+          .subscribe(
+            res => {
+              console.log(res);
+              this.router.navigate(['/']);
+            },
+            err => {
+              console.error(err);
+            }
+          );
+      } else {
+        this.gamesService.saveGame(this.game)
+          .subscribe(
+            res => {
+              console.log(res);
+              this.router.navigate(['/']);
+            },
+            err => console.error(err)
+          );
+      }
     }
   }
 }
