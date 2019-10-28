@@ -3,7 +3,9 @@ import { Games } from 'src/app/models/Games';
 import { NgForm } from '@angular/forms';
 
 import { GamesService } from 'src/app/services/games.service';
+
 import { Router, ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   // tslint:disable-next-line: quotemark
@@ -24,7 +26,8 @@ export class GamesFormComponent implements OnInit {
   constructor(
     private gamesService: GamesService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private toastrService: ToastrService
   ) { }
 
   ngOnInit() {
@@ -60,6 +63,7 @@ export class GamesFormComponent implements OnInit {
           .subscribe(
             res => {
               console.log(res);
+              this.toastrService.info('Juego actualizado correctamente.');
               this.router.navigate(['/']);
             },
             err => {
@@ -70,7 +74,7 @@ export class GamesFormComponent implements OnInit {
         this.gamesService.saveGame(this.game)
           .subscribe(
             res => {
-              console.log(res);
+              this.toastrService.success('Juego guardado correctamente.');
               this.router.navigate(['/']);
             },
             err => console.error(err)

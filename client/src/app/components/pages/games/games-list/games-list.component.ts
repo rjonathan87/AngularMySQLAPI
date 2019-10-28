@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { GamesService } from 'src/app/services/games.service';
 import { Games } from 'src/app/models/Games';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-games-list',
@@ -13,7 +14,11 @@ export class GamesListComponent implements OnInit {
 
   games: any = [];
 
-  constructor(private gamesService: GamesService, private router: Router) { }
+  constructor(
+    private gamesService: GamesService,
+    private router: Router,
+    private toastr: ToastrService
+  ) { }
 
   ngOnInit() {
     this.getGames();
@@ -41,6 +46,7 @@ export class GamesListComponent implements OnInit {
         .subscribe(
           res => {
             console.log(res);
+            this.toastr.error('Eliminado correctamente');
             this.getGames();
           },
           err => {
